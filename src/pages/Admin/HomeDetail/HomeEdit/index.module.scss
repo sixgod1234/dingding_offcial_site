@@ -1,0 +1,55 @@
+.HomeFormEdit-container{
+    padding:0 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .edit-header{
+        margin:0 0 24px 0;
+    }
+    .form-container{
+        // width: 90%;
+    }
+    .action-container{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .productCase-container{
+        border:1px dashed #dd7e7e;
+        &:hover{
+            border-color: #1677ff;
+        }
+    }
+
+    .upload-container{
+        :global{
+            .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item-container,
+            .ant-upload.ant-upload-select{
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+    .action-button-container{
+        width: 60px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 24px;
+        .dynamic-delete-button{
+            color: #dd7e7e;
+        }
+        .dynamic-add-button{
+            color: #1677ff;
+        }
+    }
+    .form-list-container{
+        background: rgba(236, 202, 162, 0.2);
+        padding-top: 16px;
+        margin-bottom: 16px;
+    }
+    :global{
+      
+    }
+    
+}

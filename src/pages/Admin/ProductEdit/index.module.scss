@@ -1,0 +1,13 @@
+.container{
+    padding:0 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .edit-header{
+        margin:0 0 24px 0;
+    }
+    .action-container{
+        display: flex;
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,24 @@
+.container{
+    .card-action{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .img-container{
+        width: 100px;
+        border: 1px solid #eee;
+    }
+    :global{
+        .ant-descriptions-item-label,.ant-descriptions-item-content{
+            min-width: 120px;
+        }
+        .ant-list-split .ant-list-item {
+            box-shadow: 4px 4px 10px #e4e4e4;
+            padding: 16px;
+            .ant-list-item-meta{
+                margin-block-end: 0;
+            }
+        }
+    }
+
+}

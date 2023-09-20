@@ -1,0 +1,68 @@
+.second-head{
+    font-family: PingFang SC;
+    color: #FFF;
+    font-style: normal;
+    width: 70%;
+    padding:200px 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-732px);
+    .second-title{
+        text-align: center;
+        font-size: 64px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .second-descrip{
+        text-align: center;
+        font-size: 24px;
+        line-height: 40px; /* 166.667% */
+        margin-bottom: 30px;
+    }
+    .second-content{
+        max-width: 1000px;
+        height: 60px;
+        &:hover{
+            border: 1px solid #28976F;
+        }
+        .suffix-button{
+            color: #FFF;
+            font-family: PingFang SC;
+            font-size: 18px;
+            width: 116px;
+            height: 44px;
+            border-radius: 10px;
+            background: #28976F;
+        }
+        .prefix-img{
+
+        }
+    }
+    :global{
+        .ant-input-affix-wrapper:focus{
+            border-color: #28976F !important;
+        }
+        .ant-input-prefix{
+            margin-right: 14px;
+        }
+        .ant-input-affix-wrapper-focused{
+            border-color: #28976F !important;
+        }
+        .ant-input-affix-wrapper >input.ant-input{
+            font-size: 18px;
+        }
+        .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{
+            color:#fff;
+            border-color: #28976F;
+        }
+        .ant-btn-default:not(:disabled):not(.ant-btn-disabled):active{
+            color:#fff;
+            border-color: #28976F;
+        }
+    }
+}
+
+.content-container{
+    transform: translateY(-632px);
+}
