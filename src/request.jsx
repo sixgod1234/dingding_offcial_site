@@ -86,7 +86,7 @@ export function get(url, params = {}) {
             params: params
         })
             .then(response => {
-                resolve(response.data);
+                resolve(response?.data);
             })
             .catch(err => {
                 reject(err)
@@ -104,7 +104,7 @@ export function post(url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
         service.post(url, data, config)
             .then(response => {
-                resolve(response.data);
+                resolve(response?.data);
             }, err => {
                 reject(err)
             })
@@ -120,7 +120,7 @@ export function Delete(url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
         service.delete(url, data, config)
             .then(response => {
-                resolve(response.data);
+                resolve(response?.data);
             }, err => {
                 reject(err)
             })
@@ -136,7 +136,7 @@ export function Put(url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
         service.put(url, data, config)
             .then(response => {
-                resolve(response.data);
+                resolve(response?.data);
             }, err => {
                 reject(err)
             })

@@ -11,7 +11,7 @@ const FirstContent = ({ changeTab }) => {
 
     const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
     const { dingProfile, dingDescription, dingProfileImgs, productCase, coreAdvantages, teamStyle, teamIntroduction, splitTitle, splitContent, ...reset } = headeData
-    let firstImgs = dingProfileImgs.map((item) => item.url || '') || firstContentImg
+    let firstImgs = dingProfileImgs?.map((item) => item.url || '') || firstContentImg
     let seconddata = productCase || secondImgContentData
     let adData = coreAdvantages || cardData
     let peData = teamStyle || personData

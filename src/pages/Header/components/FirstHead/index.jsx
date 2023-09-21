@@ -7,7 +7,7 @@ import { Carousel } from 'antd';
 const FirstHead = () => {
     const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
     const { headEnTitle, headZnTitle, headDescription, carouselImgs } = headeData
-    let headerImgs = carouselImgs.map((item) => item.url || '') || headerImg
+    let headerImgs = carouselImgs?.map((item) => item.url || '') || headerImg
 
     return (
         <div className={styles['first-content']}>
