@@ -20,7 +20,7 @@ const NewsIntro = ({ changeTab }) => {
                 <div className={styles['new-title']}>行业资讯</div>
                 <div></div>
                 <div className={styles['new-action']} onClick={() => changeTab(7)}>
-                    {informationList?.length && <span>MORE</span>}
+                    <span>MORE</span>
                 </div>
             </div>
             <div className={styles['new-item']}>

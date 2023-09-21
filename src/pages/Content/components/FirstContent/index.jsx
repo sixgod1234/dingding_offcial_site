@@ -91,11 +91,11 @@ const FirstContent = ({ changeTab }) => {
                     </div>
                 </div>
                 <div className={styles['home-two-back']}>
-                    {(seconddata?.length && seconddata?.length > 1) && <img className={styles['second-one-icon']} src={seconddata?.[currentIndex === 0 ? (seconddata.length - 1) : (currentIndex - 1)]?.imgUrl?.[0]?.url} alt="" />}
-                    {seconddata?.length && <img className={styles['second-two-icon']} src={seconddata?.[currentIndex]?.imgUrl?.[0]?.url} alt="" />}
-                    {(seconddata?.length && seconddata?.length > 2) && <img className={styles['second-three-icon']} src={seconddata?.[currentIndex === seconddata.length - 1 ? 0 : currentIndex + 1]?.imgUrl?.[0]?.url} alt="" />}
+                    {(seconddata?.length && seconddata?.length > 1) ? <img className={styles['second-one-icon']} src={seconddata?.[currentIndex === 0 ? (seconddata.length - 1) : (currentIndex - 1)]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {seconddata?.length ? <img className={styles['second-two-icon']} src={seconddata?.[currentIndex]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {(seconddata?.length && seconddata?.length > 2) ? <img className={styles['second-three-icon']} src={seconddata?.[currentIndex === seconddata.length - 1 ? 0 : currentIndex + 1]?.imgUrl?.[0]?.url} alt="" /> : null}
                     {
-                        seconddata?.length > 1 && < img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} />
+                        seconddata?.length > 1 ? < img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} /> : null
                     }
                 </div>
             </div>
@@ -125,16 +125,16 @@ const FirstContent = ({ changeTab }) => {
 
             <div className={`${styles['center-content']} ${styles['five-content']}`}>
                 <div className={styles['home-two-back']}>
-                    {(peData?.length && peData.length > 1) && <img className={styles['second-one-icon']} src={peData[personIndex === 0 ? (peData.length - 1) : (personIndex - 1)]?.imgUrl?.[0]?.url} alt="" />}
-                    {peData?.length && <img className={styles['second-two-icon']} src={peData[personIndex]?.imgUrl?.[0]?.url} alt="" />}
-                    {(peData?.length && peData.length > 2) && <img className={styles['second-three-icon']} src={peData[personIndex === peData.length - 1 ? 0 : personIndex + 1]?.imgUrl?.[0]?.url} alt="" />}
+                    {(peData?.length && peData.length > 1) ? <img className={styles['second-one-icon']} src={peData[personIndex === 0 ? (peData.length - 1) : (personIndex - 1)]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {peData?.length ? <img className={styles['second-two-icon']} src={peData[personIndex]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {(peData?.length && peData.length > 2) ? <img className={styles['second-three-icon']} src={peData[personIndex === peData.length - 1 ? 0 : personIndex + 1]?.imgUrl?.[0]?.url} alt="" /> : null}
                     {
-                        peData?.length > 1 && (
+                        peData?.length > 1 ? (
                             <>
                                 <img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1', '1')} />
                                 <img className={`${styles['second-four-icon']} ${styles['second-four-icon-two']}`} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('0', '1')} />
                             </>
-                        )
+                        ) : null
                     }
                 </div>
 

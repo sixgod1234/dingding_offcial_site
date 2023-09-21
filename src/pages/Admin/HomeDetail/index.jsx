@@ -18,6 +18,7 @@ const { Item } = Descriptions
 const HomeDetail = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+    const [type, setType] = useState('edit');
     const [homeData, setHomeData] = useState({})
     const [idMap, setIdMap] = useState((new Map()))
 
@@ -26,7 +27,7 @@ const HomeDetail = () => {
     }, [])
 
     const handleEdit = () => {
-        navigate('/admin/home-edit', { state: { homeData, idMap } })
+        navigate('/admin/home-edit', { state: { type, homeData, idMap } })
     }
 
     const getDetail = async () => {
@@ -35,7 +36,10 @@ const HomeDetail = () => {
             // 1.获取列表的最新元素
             const data7 = await getHomeList() || { list: [] }
             let len = data7.list.length - 1
-            if (!len || len < 0) {
+            if (len < 0) {
+                setType('add')
+                setLoading(false)
+                setHomeData({})
                 message.warning('未获取到头部数据')
                 return
             }
@@ -156,7 +160,7 @@ const HomeDetail = () => {
                 <Descriptions title={
                     <div className={styles['card-action']}>
                         <span>基本配置信息</span>
-                        <Button type="primary" onClick={handleEdit}>编辑</Button>
+                        <Button type="primary" onClick={handleEdit}>{type === 'edit' ? '编辑' : '新增'}</Button>
                     </div>}
                     bordered
                     column={4}

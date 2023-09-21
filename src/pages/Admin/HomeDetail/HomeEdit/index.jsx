@@ -27,17 +27,21 @@ const HomeFormEdit = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const { state } = location || {}
-    const { idMap, homeData } = state
+    const { type, idMap, homeData } = state
     const [form] = Form.useForm()
 
     useEffect(() => {
         // form.setFieldsValue(mockHomeData)
         // getDetail()
-        if (!homeData || idMap.size === 0) {
-            message.error('未获取到数据')
-            navigate('/admin/home-detail')
+        if (type === 'edit') {
+            if (!homeData || idMap.size === 0) {
+                message.error('未获取到数据')
+                navigate('/admin/home-detail')
+            } else {
+                form.setFieldsValue(homeData || {})
+            }
         } else {
-            form.setFieldsValue(homeData || {})
+            form.setFieldsValue({})
         }
     }, [])
 
@@ -48,17 +52,15 @@ const HomeFormEdit = () => {
             setWaiting(true)
             const { headZnTitle, headEnTitle, headDescription, carouselImgs, dingProfile, dingDescription, dingProfileImgs, case: pcase, zhAddress, phone, splitTitle, splitContent,
                 area, supplier, customer, productCase, coreAdvantages, teamIntroduction, teamStyle, companyIntroduction, companyDescription, companyStyle, honorWall, address, contactUs } = values
-            await editHome(
-                {
-                    id: idMap.get('home'),
-                    name: headZnTitle,
-                    enName: headEnTitle,
-                    description: headDescription,
-                    images: carouselImgs.map((item) => item.url).join(';'),
-                }
-            )
+            await (type === 'edit' ? editHome : addHome)({
+                id: idMap.get('home'),
+                name: headZnTitle,
+                enName: headEnTitle,
+                description: headDescription,
+                images: carouselImgs.map((item) => item.url).join(';'),
+            })
             // profile --- 项
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('profile'),
                     type: 'profile',
@@ -69,7 +71,7 @@ const HomeFormEdit = () => {
                 }
             )
             // about --- 项目案例
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('about'),
                     type: 'about',
@@ -79,7 +81,7 @@ const HomeFormEdit = () => {
                 }
             )
             // advantage --- 核心优势
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('advantage'),
                     type: 'advantage',
@@ -89,7 +91,7 @@ const HomeFormEdit = () => {
                 }
             )
             // teamStyle --- 团队风采
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('employee'),
                     type: 'employee',
@@ -100,7 +102,7 @@ const HomeFormEdit = () => {
                 }
             )
             // aboutDetail --- 关于我们详情
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('aboutDetail'),
                     type: 'aboutDetail',
@@ -110,7 +112,7 @@ const HomeFormEdit = () => {
                 }
             )
             // honor --- 荣誉
-            await editContent(
+            await (type === 'edit' ? editContent : addContent)(
                 {
                     id: idMap.get('honor'),
                     type: 'honor',
