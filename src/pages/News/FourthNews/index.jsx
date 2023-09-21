@@ -13,7 +13,7 @@ const FourthNews = () => {
     const [activeIndex, setActiveIndex] = useState('')
     // const [keyword, setKeyword] = useState('农业相关政策')
     const [masonry, setMasonry] = useState(null)
-    const [loadingData, setLoadingData] = useState({ type: '0', isLoading: false })
+    const [loadingData, setLoadingData] = useState({ type: '0', loading: false })
     const [newsData, setNewsData] = useState([])
     const [pageSize, setPageSize] = useState(10)
     const [hasMore, setHasMore] = useState(false)
@@ -27,22 +27,22 @@ const FourthNews = () => {
         getCategory('solution')
     }, [])
 
-    const getMacy = () => {
-        if (masonry) {
-            masonry.reInit()
-        } else {
-            let masonry = new Macy({
-                container: '.macy-container', // 图像列表容器
-                trueOrder: false,
-                waitForImages: false,
-                useOwnImageLoader: false,
-                debug: true,
-                margin: { x: 30, y: 30 },    // 设计列与列的间距
-                columns: 3,    // 设置列数
-            })
-            setMasonry(masonry)
-        }
-    }
+    // const getMacy = () => {
+    //     if (masonry) {
+    //         masonry.reInit()
+    //     } else {
+    //         let masonry = new Macy({
+    //             container: '.macy-container', // 图像列表容器
+    //             trueOrder: false,
+    //             waitForImages: false,
+    //             useOwnImageLoader: false,
+    //             debug: true,
+    //             margin: { x: 30, y: 30 },    // 设计列与列的间距
+    //             columns: 3,    // 设置列数
+    //         })
+    //         setMasonry(masonry)
+    //     }
+    // }
 
 
     // useLayoutEffect(() => {
@@ -128,7 +128,7 @@ const FourthNews = () => {
                 {/* <div className={styles['new-action']}></div> */}
                 <div className={styles['new-tab']}>
                     {
-                        category.map((item, index) =>
+                        category?.map((item, index) =>
                             <span
                                 key={item.id}
                                 onClick={() => handleClick(item.id)}
@@ -143,7 +143,7 @@ const FourthNews = () => {
             <Spin spinning={loadingData.type === '0' && loadingData.loading} size="large">
                 <div className={`${styles['new-item']} macy-container`}>
                     {
-                        newsData.map((item, index) => (
+                        newsData?.map((item, index) => (
                             <div className={styles['new-right']} title={item.name} key={item.id}>
                                 <img alt="" src={newsData[index].image} />
                                 <div className={styles['new-title']}>

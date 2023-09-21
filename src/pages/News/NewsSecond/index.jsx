@@ -48,7 +48,7 @@ const NewsSecond = ({ changeTab }) => {
                 <div className={styles['new-item']}>
                     {dataSource[0] && <div className={styles['new-left']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[0].id}`)}>
                         <img alt="" src={dataSource[0].image} />
-                        <div className={styles['new-time']}>{moment(Date.parse(dataSource[0].publicDate) || parseInt(dataSource[0].publicDate)).format('YYYY.MM.DD')}</div>
+                        <div className={styles['new-time']}>{dataSource[0].publicDate && moment(Date.parse(dataSource[0].publicDate) || parseInt(dataSource[0].publicDate)).format('YYYY.MM.DD')}</div>
                         <div className={styles['new-title']}>{dataSource[0].name}喝啥酒回复艰苦户籍科</div>
                         <div className={styles['new-descrip']}>{dataSource[0].subName}</div>
                     </div>}
@@ -59,7 +59,7 @@ const NewsSecond = ({ changeTab }) => {
                         <div className={styles['new-descrip']}>{dataSource[1].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{moment(Date.parse(dataSource[1].publicDate) || parseInt(dataSource[1].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource[1].publicDate && moment(Date.parse(dataSource[1].publicDate) || parseInt(dataSource[1].publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                 </div>
@@ -71,7 +71,7 @@ const NewsSecond = ({ changeTab }) => {
                         <div className={styles['new-descrip']}>{dataSource[2].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{moment(Date.parse(dataSource[2].publicDate) || parseInt(dataSource[2].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource[2].publicDate && moment(Date.parse(dataSource[2].publicDate) || parseInt(dataSource[2].publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                     {dataSource[3] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[3].id}`)}>
@@ -80,7 +80,7 @@ const NewsSecond = ({ changeTab }) => {
                         <div className={styles['new-descrip']}>{dataSource[3].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{moment(Date.parse(dataSource[3].publicDate) || parseInt(dataSource[3].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource[3].publicDate && moment(Date.parse(dataSource[3].publicDate) || parseInt(dataSource[3].publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                     {dataSource[4] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[4].id}`)}>
@@ -89,7 +89,7 @@ const NewsSecond = ({ changeTab }) => {
                         <div className={styles['new-descrip']}>{dataSource[4].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{moment(Date.parse(dataSource[4].publicDate) || parseInt(dataSource[4].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource[4].publicDate && moment(Date.parse(dataSource[4].publicDate) || parseInt(dataSource[4].publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                 </div>

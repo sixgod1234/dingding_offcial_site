@@ -44,7 +44,7 @@ const IndustryNews = ({ changeTab }) => {
                 {/* { } */}
                 {firstTag.current ?
                     <>
-                        <ThirdNews searchWord={searchWord} type={'1'} tabMenu={tabMenu} />
+                        <ThirdNews searchWord={searchWord} type={'1'} tabType={'1'} tabMenu={tabMenu} />
                     </> :
                     <>
                         <NewsIntro changeTab={changeTab} />

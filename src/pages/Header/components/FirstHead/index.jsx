@@ -19,7 +19,7 @@ const FirstHead = () => {
             </div>
             <div className={styles['header-right']}>
                 <Carousel autoplay dots={false}>
-                    {headerImgs.map((item) => <img src={item} alt="" />)}
+                    {headerImgs?.map((item, index) => <img key={index} src={item} alt="" />)}
                 </Carousel>
             </div>
         </div>

@@ -13,8 +13,8 @@ const EightContent = () => {
 
     const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
     const { companyStyle, companyDescription, companyIntroduction, honorWall } = headeData
-    let imgs = companyStyle.map((item) => item.url || '') || firstContentImg
-    let honors = honorWall.map((item) => item.url || '') || honorBackground
+    let imgs = companyStyle?.map((item) => item.url || '') || []
+    let honors = honorWall?.map((item) => item.url || '') || []
 
     useEffect(() => {
         getMacy()
@@ -62,10 +62,10 @@ const EightContent = () => {
         <div className={styles['first-content']}>
             <div className={styles['center-content']}>
                 <div className={styles['home-two-back']}>
-                    <img className={styles['second-one-icon']} src={imgs[currentIndex === 0 ? (imgs.length - 1) : (currentIndex - 1)]} alt="" />
-                    <img className={styles['second-two-icon']} src={imgs[currentIndex]} alt="" />
-                    <img className={styles['second-three-icon']} src={imgs[currentIndex === imgs.length - 1 ? 0 : currentIndex + 1]} alt="" />
-                    <img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} />
+                    {(imgs?.length > 1) ? <img className={styles['second-one-icon']} src={imgs[currentIndex === 0 ? (imgs.length - 1) : (currentIndex - 1)]} alt="" /> : null}
+                    {imgs?.length ? <img className={styles['second-two-icon']} src={imgs[currentIndex]} alt="" /> : null}
+                    {imgs?.length > 2 ? <img className={styles['second-three-icon']} src={imgs[currentIndex === imgs.length - 1 ? 0 : currentIndex + 1]} alt="" /> : null}
+                    {(imgs?.length > 1) ? <img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} /> : null}
                 </div>
                 <div className={styles['home-second-content']}>
                     <div className={styles['content-title']}>Company Profile</div>
@@ -98,7 +98,7 @@ const EightContent = () => {
 
                 <div className={`${styles['honor-background']} macy-container`}>
                     {
-                        honors.map((item, index) => <img key={index} src={item} alt="" className={styles['honoe-img']} />)
+                        honors?.map((item, index) => <img key={index} src={item} alt="" className={styles['honoe-img']} />)
                     }
                 </div>
             </div>

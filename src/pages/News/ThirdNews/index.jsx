@@ -10,12 +10,12 @@ import Macy from 'macy'
 import { getTypeCategory, getNewsList } from '../../../api/article'
 import moment from 'moment'
 
-const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '' }) => {
+const ThirdNews = ({ searchWord, type = '0', tabType, enName = '', zhName = '' }) => {
     const [activeIndex, setActiveIndex] = useState('全部')
     const [masonry, setMasonry] = useState(null)
     const [newsData, setNewsData] = useState([])
     const [hasMore, setHasMore] = useState(false)
-    const [loadingData, setLoadingData] = useState({ type: '0', isLoading: false })
+    const [loadingData, setLoadingData] = useState({ type: '0', loading: false })
     const [category, setCategory] = useState([])
     const [pageSize, setPageSize] = useState(10)
     const [categoryMap, setCategoryMap] = useState(new Map())
@@ -23,19 +23,19 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
     const masonryRef = useRef(null)
     const navigate = useNavigate()
 
-    let menus = [{ id: 'informatin', name: '行业资讯' }, { id: 'solution', name: '解决方案' }, { id: 'case', name: '成功案例' }]
+    let menus = [{ id: 'information', name: '行业资讯' }, { id: 'solution', name: '解决方案' }, { id: 'case', name: '成功案例' }]
 
     useEffect(() => {
         getCategory(enName)
     }, [enName])
 
     useEffect(() => {
-        if (type === '0') {
+        if (tabType === '0') {
             getNewsData('0', activeIndex === '全部' ? '' : activeIndex, searchWord, enName, 1, pageSize)
         } else {
             getNewsData('0', '', searchWord, activeIndex === '全部' ? '' : activeIndex, 1, pageSize)
         }
-    }, [searchWord, activeIndex, enName])
+    }, [searchWord, activeIndex, enName, tabType])
 
     useLayoutEffect(() => {
         getMacy()
@@ -87,7 +87,7 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
 
     const getCategory = async (type) => {
         try {
-            const data = type === '0' ? (await getTypeCategory(type)) || [] : menus
+            const data = tabType === '0' ? (await getTypeCategory(type) || []) : menus
             setCategory([{ id: '全部', name: '全部' }, ...data])
             // console.log(zhName, data)
             data.map((item) => categoryMap.set(item.id, item.name))
@@ -111,6 +111,7 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
 
             setHasMore(false)
             if (data.total && data.total > (type === '1' ? (pageSize + 10) : pageSize)) {
+                // console.log(data.total, (type === '1' ? (pageSize + 10) : pageSize))
                 setHasMore(true)
             }
             setLoadingData({ type, loading: false })
@@ -133,7 +134,7 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
                 <div className={styles['new-title']}>{type === '0' ? zhName : '“' + searchWord + '”'}</div>
                 <div className={styles['new-tab']}>
                     {
-                        category.map((item, index) =>
+                        category?.map((item, index) =>
                             <span
                                 key={item.id}
                                 onClick={() => handleClick(item.id)}
@@ -148,16 +149,17 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
             <Spin spinning={loadingData.type === '0' && loadingData.loading} size="large">
                 <div className={`${styles['new-item']} macy-container`}>
                     {
-                        newsData.map((item, index) => (
+                        newsData?.map((item, index) => (
                             <div className={styles['new-right']} key={item.id} title={item.subName}>
                                 <img alt="" src={item.image} />
                                 <div className={styles['new-title']} dangerouslySetInnerHTML={{ __html: getHTML(item.name) }}></div>
                                 <div className={styles['new-descrip']}>{item.subName}</div>
                                 <div className={styles['new-time-right']}>
                                     <span
-                                        onClick={() => navigate(`/detail?type=news&newType=${categoryMap.get(type === '0' ? item.category : activeIndex)}&id=${item.id}`)}
+                                        onClick={() => navigate(`/detail?type=news&newType=${categoryMap.get(tabType === '0' ? item.category : item.type)}&id=${item.id}`)}
                                     >
-                                        {categoryMap.get(type === '0' ? item.category : activeIndex) || '查看详情'}
+                                        {console.log(categoryMap.get(tabType === '0' ? item.category : item.type))}
+                                        {categoryMap.get(tabType === '0' ? item.category : item.type) || '查看详情'}
                                         <RightOutlined />
                                     </span>
                                     <span className={styles['new-time-time']}>{item.publicDate && moment(parseInt(item.publicDate)).format('YYYY.MM.DD')}</span>
@@ -170,10 +172,10 @@ const ThirdNews = ({ searchWord, type = '0', currentTab, enName = '', zhName = '
                 <Spin spinning={loadingData.type === '1' && loadingData.loading}>
                     <div className={styles['new-action-footer']} >
                         {hasMore && <span onClick={() => {
-                            if (type === '0') {
-                                getNewsData('0', activeIndex === '全部' ? '' : activeIndex, searchWord, enName, 1, (pageSize + 10))
-                            } else {
+                            if (tabType === '0') {
                                 getNewsData('1', activeIndex === '全部' ? '' : activeIndex, searchWord, enName, 1, (pageSize + 10))
+                            } else {
+                                getNewsData('1', '', searchWord, activeIndex === '全部' ? '' : activeIndex, 1, (pageSize + 10))
                             }
                             setHasMore(false)
                         }}>

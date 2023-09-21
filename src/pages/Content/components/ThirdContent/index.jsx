@@ -46,9 +46,10 @@ const ThirdContent = ({ currentTab }) => {
                 <ThirdNews
                     searchWord={searchWord}
                     zhName={currentTab === 7 ? '行业资讯' : '最新文章'}
-                    enName={currentTab === 7 ? 'information' : ''}
+                    enName={currentTab === 7 ? 'information' : 'laste news'}
                     tabMenu={currentTab}
                     type={'0'}
+                    tabType={currentTab === 7 ? '0' : '1'}
                 />
             </div>
         </>

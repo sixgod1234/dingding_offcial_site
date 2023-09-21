@@ -9,7 +9,7 @@ import { getNewsList, getTypeCategory } from '../../../api/article'
 import { useNavigate } from 'react-router-dom'
 
 const FifthNews = () => {
-    const [loadingData, setLoadingData] = useState({ type: '0', isLoading: false })
+    const [loadingData, setLoadingData] = useState({ type: '0', loading: false })
     const [newsData, setNewsData] = useState([])
     const [category, setCategory] = useState([])
     const [categoryMap, setCategoryMap] = useState(new Map())
@@ -56,7 +56,7 @@ const FifthNews = () => {
         <div style={{ minHeight: "500px" }}>
             <Spin spinning={loadingData.type === '0' && loadingData.loading} size="large">
                 {
-                    newsData.map((itm, idx) => (
+                    newsData?.map((itm, idx) => (
                         <div className={styles['new-container']} key={itm.id}>
                             <>
                                 {
@@ -79,7 +79,7 @@ const FifthNews = () => {
                             </>
                             <div className={styles['new-item']}>
                                 {
-                                    itm.list?.map((item, index) => (
+                                    itm?.list?.map((item, index) => (
                                         <div className={styles['new-right']} title={item.name} key={item.id}>
                                             <img alt="" src={item.image} />
                                             <div className={styles['new-title']}>

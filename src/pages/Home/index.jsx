@@ -83,7 +83,8 @@ const Home = () => {
             // 1.获取列表的最新元素
             const data7 = await getHomeList() || { list: [] }
             let len = data7.list.length - 1
-            if (!len || len < 0) {
+            if (len < 0) {
+                setLoading(false)
                 message.warning('未获取到首页数据')
                 return
             }
