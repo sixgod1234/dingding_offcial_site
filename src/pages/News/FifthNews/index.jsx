@@ -71,7 +71,7 @@ const FifthNews = () => {
                                                 <div className={styles['new-title']}>{itm.name}</div>
                                             </div>
                                             <div className={styles['new-header-three']}>
-                                                <div className={styles['new-title']}>通过智能硬件与大数据结合，让传统农业供应链进入大数据智能时代</div>
+                                                <div className={styles['new-title']}>{itm.description || '通过智能硬件与大数据结合，让传统农业供应链进入大数据智能时代'}</div>
                                             </div>
                                         </>
                                     ) : null

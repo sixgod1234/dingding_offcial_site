@@ -260,6 +260,12 @@ const ArticleManage = () => {
                         rules={[{ required: true, message: '分类名称必填' }]}>
                         <Input placeholder={`请输入分类名称`} />
                     </Item>
+                    <Item
+                        name="description"
+                        label='分类描述'
+                        rules={[{ required: true, message: '分类描述必填' }]}>
+                        <Input placeholder={`请输入分类描述`} />
+                    </Item>
                 </Form>
             </Modal>
 
