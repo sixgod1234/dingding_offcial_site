@@ -3,25 +3,29 @@ import styles from './index.module.scss'
 export const headReSource = [
     {
         label: '首页',
-        value: '0',
+        path: '/home',
+        state: { currentTab: 0 },
         type: 'dropdown',
         children: []
     },
     {
         label: '产品中心',
-        value: '1',
+        path: '/product',
+        state: { currentTab: 1 },
         type: 'dropdown',
         children: []
     },
     {
         label: '解决方案',
-        value: '2',
+        path: '/resolution',
+        state: { currentTab: 2 },
         type: 'dropdown',
         children: []
     },
     {
         label: '成功案例',
-        value: '3',
+        path: '/successed-case',
+        state: { currentTab: 3 },
         type: 'dropdown',
         children: [
             // {
@@ -44,19 +48,22 @@ export const headReSource = [
     },
     {
         label: '联系我们',
-        value: '4',
+        path: '/contact-us',
+        state: { currentTab: 4 },
         type: 'dropdown',
         children: []
     },
     {
         label: '关于我们',
-        value: '5',
+        path: '/about-us',
+        state: { currentTab: 5 },
         type: 'dropdown',
         children: []
     },
     {
         label: '搜索',
-        value: '6',
+        path: '/search',
+        state: { currentTab: 6 },
         type: 'button',
         children: []
     },
@@ -64,19 +71,24 @@ export const headReSource = [
 
 export const headTabData = headReSource.map((item) => {
     if (item.type === 'dropdown' && item.children.length) {
-        return (
-            <Dropdown key={item.value} menu={{ items: item.children }} arrow={{ pointAtCenter: true }}>
-                <div>{item.label}</div>
-            </Dropdown>
-        )
+        return ({
+            ...item,
+            element: (
+                <Dropdown key={item.path} menu={{ items: item.children }} arrow={{ pointAtCenter: true }}>
+                    <div>{item.label}</div>
+                </Dropdown>
+            )
+        })
     }
     if (item.type === 'button') {
-        return (
-            <Button key={item.value} className={styles['header-button']}>
-                {item.label}
-            </Button>
-        )
+        return ({
+            ...item,
+            element:
+                <Button key={item.path} className={styles['header-button']}>
+                    {item.label}
+                </Button>
+        })
     }
-    return item.label
+    return item
 }
 )

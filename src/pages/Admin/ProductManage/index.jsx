@@ -42,8 +42,8 @@ const ProductManage = () => {
     // 获取产品类型数据
     const handleProductTypeList = async () => {
         const data = await getProductTypeList(100)
-        data.list.map((item, index) => productMap.set(item.id, item))
-        setProductList(data.list || [])
+        data?.list?.map((item, index) => productMap.set(item.id, item))
+        setProductList(data?.list || [])
     }
 
     // 请求表格数据

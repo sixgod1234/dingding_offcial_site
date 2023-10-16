@@ -116,7 +116,7 @@ const HomeDetail = () => {
         if (key === 'carouselImgs' || key === 'honorWall' || key === 'dingProfileImgs' || key === 'companyStyle') {
             return (
                 <Space size={20}>
-                    {homeData?.[key]?.map((item, index) => <img key={index} className={styles['img-container']} src={item.url} alt="" />)}
+                    {homeData?.[key]?.map((item, index) => <img key={index} className={styles['img-container']} src={item.url} alt="风采图" />)}
                 </Space>
             )
         }
@@ -131,7 +131,7 @@ const HomeDetail = () => {
                             <img
                                 width={100}
                                 height={100}
-                                alt="logo"
+                                alt={key === 'productCase' ? '成功案例图' : (key === 'teamStyle' ? '团队风采图' : '核心优势图')}
                                 src={item.imgUrl?.[0]?.url}
                             />
                         }

@@ -145,7 +145,7 @@ const FourthNews = () => {
                     {
                         newsData?.map((item, index) => (
                             <div className={styles['new-right']} title={item.name} key={item.id}>
-                                <img alt="" src={newsData[index].image} />
+                                <img alt={item.name} src={newsData[index].image} />
                                 <div className={styles['new-title']}>
                                     {item.name}
                                 </div>

@@ -3,9 +3,10 @@ import styles from './index.module.scss'
 import HeaderRight from '../../../../assets/images/Slice 4.png'
 import { headerImg } from '../../../Content/data'
 import { Carousel } from 'antd';
+import { localParse } from '../../../../util'
 
 const FirstHead = () => {
-    const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
+    const headeData = localParse('homeData') || {}
     const { headEnTitle, headZnTitle, headDescription, carouselImgs } = headeData
     let headerImgs = carouselImgs?.map((item) => item.url || '') || headerImg
 
@@ -19,7 +20,7 @@ const FirstHead = () => {
             </div>
             <div className={styles['header-right']}>
                 <Carousel autoplay dots={false}>
-                    {headerImgs?.map((item, index) => <img key={index} src={item} alt="" />)}
+                    {headerImgs?.map((item, index) => <img key={index} src={item} alt="轮播图" />)}
                 </Carousel>
             </div>
         </div>

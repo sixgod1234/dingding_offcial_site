@@ -3,10 +3,11 @@ import { } from 'antd'
 import styles from './index.module.scss'
 import { productAllData, productData, productModuleData } from "../../data";
 import { useNavigate } from "react-router-dom";
+import { localParse } from '../../../../util'
 
 const FourthContent = () => {
-    const productAll = JSON.parse(localStorage.getItem('productAll') || '{}') || '{}'
-    const productAllType = JSON.parse(localStorage.getItem('productAllType') || '[]')
+    const productAll = localParse('productAll') || {}
+    const productAllType = localParse('productAllType') || []
     const productMap = new Map()
     productAllType.map((item) => productMap.set(item.id, item.name))
 
@@ -34,7 +35,7 @@ const FourthContent = () => {
                         productAll[productMap.get(currentTag)]?.map((item, index) => (
                             <div className={styles['product-container']} >
                                 <div className={styles['product-card']} key={item.id}>
-                                    <img src={item.image} alt="" />
+                                    <img src={item.image} alt={item.name} />
                                 </div>
                                 <span> {item.name}</span>
                             </div>
@@ -48,7 +49,7 @@ const FourthContent = () => {
                     productAllType?.map((item, index) => (
                         <>
                             <div className={`${styles['product-' + ((index + 1) % 5)]}  ${styles['product-modules-all']}`} key={item.id}>
-                                {productAll[productMap.get(item.id)]?.length ? <div className={styles['product-left']}>
+                                {productAll[productMap.get(item.id)]?.length ? <div className={styles['product-left']} id={item.enName}>
                                     <div className={styles['product-en']}>{item.enName}</div>
                                     <div className={styles['product-zh']}>{item.name}</div>
                                 </div> : null}
@@ -60,7 +61,7 @@ const FourthContent = () => {
                                                 <div className={styles['p-descrip']}>{itm.profile}</div>
                                             </div>
                                             <div className={styles['right-img']}>
-                                                <img src={itm.image} alt="" />
+                                                <img src={itm.image} alt={itm.name} />
                                             </div>
                                         </div>
                                     ))

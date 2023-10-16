@@ -151,14 +151,14 @@ const ThirdNews = ({ searchWord, type = '0', tabType, enName = '', zhName = '' }
                     {
                         newsData?.map((item, index) => (
                             <div className={styles['new-right']} key={item.id} title={item.subName}>
-                                <img alt="" src={item.image} />
+                                <img alt={item.name} src={item.image} />
                                 <div className={styles['new-title']} dangerouslySetInnerHTML={{ __html: getHTML(item.name) }}></div>
                                 <div className={styles['new-descrip']}>{item.subName}</div>
                                 <div className={styles['new-time-right']}>
                                     <span
                                         onClick={() => navigate(`/detail?type=news&newType=${categoryMap.get(tabType === '0' ? item.category : item.type)}&id=${item.id}`)}
                                     >
-                                        {console.log(categoryMap.get(tabType === '0' ? item.category : item.type))}
+                                        {/* {console.log(categoryMap.get(tabType === '0' ? item.category : item.type))} */}
                                         {categoryMap.get(tabType === '0' ? item.category : item.type) || '查看详情'}
                                         <RightOutlined />
                                     </span>

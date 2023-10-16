@@ -4,12 +4,13 @@ import styles from './index.module.scss'
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import { cardData, firstContentImg, FirstImgContentData, personData, secondImgContentData } from '../../data'
 import RightIcon from '../../../../assets/images/Slice 9.png'
+import { localParse } from '../../../../util'
 
 const FirstContent = ({ changeTab }) => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [personIndex, setPersonIndex] = useState(0)
 
-    const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
+    const headeData = localParse('homeData') || {}
     const { dingProfile, dingDescription, dingProfileImgs, productCase, coreAdvantages, teamStyle, teamIntroduction, splitTitle, splitContent, ...reset } = headeData
     let firstImgs = dingProfileImgs?.map((item) => item.url || '') || []
     let seconddata = productCase || []
@@ -37,7 +38,7 @@ const FirstContent = ({ changeTab }) => {
             <div className={styles['home-content']}>
                 <div className={styles['home-first-back']}>
                     {
-                        firstImgs?.map((item, index) => <img key={index} className={styles[`first-${index == 0 ? 'one' : 'two'}-icon`]} src={item} alt="" />)
+                        firstImgs?.map((item, index) => <img key={index} className={styles[`first-${index == 0 ? 'one' : 'two'}-icon`]} src={item} alt="公司简介" />)
                     }
                 </div>
                 <div className={styles['home-first-content']}>
@@ -48,7 +49,7 @@ const FirstContent = ({ changeTab }) => {
                         {
                             FirstImgContentData?.map((item, index) => (
                                 <div key={index} className={styles['content-between']}>
-                                    <img src={item.icon} alt="" className={styles['content-img']} />
+                                    <img src={item.icon} alt="简介图" className={styles['content-img']} />
                                     <div className={styles['content-container']}>
                                         <div className={styles['content-icon-title']}>{item.title}</div>
                                         <div className={styles['content-icon-des']}>
@@ -63,7 +64,7 @@ const FirstContent = ({ changeTab }) => {
                 </div>
             </div>
 
-            <div className={styles['center-content']}>
+            <div className={styles['center-content']} id="success-case">
                 <div className={styles['home-second-content']}>
                     <div className={styles['content-title']}>Company Profile</div>
                     <div className={styles['content-description']}>町町的产品和解决方案，最厉害的町町</div>
@@ -91,16 +92,16 @@ const FirstContent = ({ changeTab }) => {
                     </div>
                 </div>
                 <div className={styles['home-two-back']}>
-                    {(seconddata?.length && seconddata?.length > 1) ? <img className={styles['second-one-icon']} src={seconddata?.[currentIndex === 0 ? (seconddata.length - 1) : (currentIndex - 1)]?.imgUrl?.[0]?.url} alt="" /> : null}
-                    {seconddata?.length ? <img className={styles['second-two-icon']} src={seconddata?.[currentIndex]?.imgUrl?.[0]?.url} alt="" /> : null}
-                    {(seconddata?.length && seconddata?.length > 2) ? <img className={styles['second-three-icon']} src={seconddata?.[currentIndex === seconddata.length - 1 ? 0 : currentIndex + 1]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {(seconddata?.length && seconddata?.length > 1) ? <img className={styles['second-one-icon']} src={seconddata?.[currentIndex === 0 ? (seconddata.length - 1) : (currentIndex - 1)]?.imgUrl?.[0]?.url} alt="成功案例图" /> : null}
+                    {seconddata?.length ? <img className={styles['second-two-icon']} src={seconddata?.[currentIndex]?.imgUrl?.[0]?.url} alt="成功案例图" /> : null}
+                    {(seconddata?.length && seconddata?.length > 2) ? <img className={styles['second-three-icon']} src={seconddata?.[currentIndex === seconddata.length - 1 ? 0 : currentIndex + 1]?.imgUrl?.[0]?.url} alt="成功案例图" /> : null}
                     {
                         seconddata?.length > 1 ? < img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} /> : null
                     }
                 </div>
             </div>
 
-            <div className={styles['three-content']}>
+            <div className={styles['three-content']} id='core-advantage'>
                 <div className={styles['content-title']}>core advantages</div>
                 <div className={styles['content-description']}>我们的核心优势</div>
                 <div className={styles['three-img-container']}>
@@ -111,7 +112,7 @@ const FirstContent = ({ changeTab }) => {
                                 <span>0{index + 1}</span>
                                 <div className={styles['three-title']}>{item.title}</div>
                                 <div className={styles['three-descrip']}>{item.content}</div>
-                                <img src={item.imgUrl?.[0]?.url} alt="" className={styles['three-icon']} />
+                                <img src={item.imgUrl?.[0]?.url} alt={item.title} className={styles['three-icon']} />
                             </div>
                         ))
                     }
@@ -125,20 +126,20 @@ const FirstContent = ({ changeTab }) => {
 
             <div className={`${styles['center-content']} ${styles['five-content']}`}>
                 <div className={styles['home-two-back']}>
-                    {(peData?.length && peData.length > 1) ? <img className={styles['second-one-icon']} src={peData[personIndex === 0 ? (peData.length - 1) : (personIndex - 1)]?.imgUrl?.[0]?.url} alt="" /> : null}
-                    {peData?.length ? <img className={styles['second-two-icon']} src={peData[personIndex]?.imgUrl?.[0]?.url} alt="" /> : null}
-                    {(peData?.length && peData.length > 2) ? <img className={styles['second-three-icon']} src={peData[personIndex === peData.length - 1 ? 0 : personIndex + 1]?.imgUrl?.[0]?.url} alt="" /> : null}
+                    {(peData?.length && peData.length > 1) ? <img className={styles['second-one-icon']} src={peData[personIndex === 0 ? (peData.length - 1) : (personIndex - 1)]?.imgUrl?.[0]?.url} alt="员工图" /> : null}
+                    {peData?.length ? <img className={styles['second-two-icon']} src={peData[personIndex]?.imgUrl?.[0]?.url} alt="员工图" /> : null}
+                    {(peData?.length && peData.length > 2) ? <img className={styles['second-three-icon']} src={peData[personIndex === peData.length - 1 ? 0 : personIndex + 1]?.imgUrl?.[0]?.url} alt="员工图" /> : null}
                     {
                         peData?.length > 1 ? (
                             <>
-                                <img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1', '1')} />
-                                <img className={`${styles['second-four-icon']} ${styles['second-four-icon-two']}`} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('0', '1')} />
+                                <img className={styles['second-four-icon']} src={RightIcon} alt="向前" onClick={() => handleAddOrSubIndex('1', '1')} />
+                                <img className={`${styles['second-four-icon']} ${styles['second-four-icon-two']}`} src={RightIcon} alt="向后" onClick={() => handleAddOrSubIndex('0', '1')} />
                             </>
                         ) : null
                     }
                 </div>
 
-                <div className={styles['home-second-content']}>
+                <div className={styles['home-second-content']} id="our-team">
                     <div className={styles['content-title']}>about Us</div>
                     <div className={styles['content-description']}>我们的团队</div>
                     <div className={styles['conten-sub']} title={teamIntroduction}>{teamIntroduction || '我们的团队介绍'}</div>

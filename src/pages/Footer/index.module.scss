@@ -92,11 +92,21 @@
                     font-size: 14px;
                     line-height: 32px; /* 228.571% */
                     margin-bottom: 5px;
+                    max-width: 100px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                     &:first-child{
                         color: #FFF;
                         font-size: 18px;
                         font-weight: 700;
                         text-transform: uppercase;
+                    }
+                    &:not(:first-child){
+                        cursor: pointer;
+                        &:hover{
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
@@ -110,6 +120,12 @@
         justify-content: space-between;
         align-items: center;
         gap: 25%;
+        .footer-icp{
+            cursor: pointer;
+            &:hover{
+                text-decoration:underline;
+            }
+        }
         span{
             color: rgba(255, 255, 255, 0.50);
             font-family: DM Sans;

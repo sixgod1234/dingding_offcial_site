@@ -3,14 +3,15 @@ import { ClockCircleOutlined } from '@ant-design/icons';
 import { newsData } from '../../Content/data'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom';
+import { localParse } from '../../../util'
 
 // 行业资讯
 const NewsIntro = ({ changeTab }) => {
     const navigate = useNavigate()
-    const informationList = JSON.parse(localStorage.getItem('information') || '[]')
+    const informationList = localParse('information') || []
 
     return (
-        <div className={styles['new-container']}>
+        <div className={styles['new-container']} id="information-news">
             <div className={styles['new-header']}>
                 <div className={styles['new-title']}>information</div>
                 <div className={styles['new-action']}></div>
@@ -19,13 +20,13 @@ const NewsIntro = ({ changeTab }) => {
             <div className={styles['new-header-two']}>
                 <div className={styles['new-title']}>行业资讯</div>
                 <div></div>
-                <div className={styles['new-action']} onClick={() => changeTab(7)}>
+                <div className={styles['new-action']} onClick={() => changeTab({ path: '/news', state: { currentTab: 7 } })}>
                     <span>MORE</span>
                 </div>
             </div>
             <div className={styles['new-item']}>
                 {informationList?.[0] && <div className={styles['new-left']} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[0].id}`)}>
-                    <img alt="" src={informationList[0].image} />
+                    <img alt={informationList[0].name} src={informationList[0].image} />
                     <div className={styles['new-time']}>
                         <span className={styles['new-time-left']}>
                             <ClockCircleOutlined />
@@ -39,7 +40,7 @@ const NewsIntro = ({ changeTab }) => {
 
                 <div>
                     {informationList?.[1] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[1].id}`)}>
-                        <img alt="" src={informationList[1].image} />
+                        <img alt={informationList[1].name} src={informationList[1].image} />
                         <div className={styles['new-title']}>{informationList[1].name}</div>
                         <div className={styles['new-descrip']}>{informationList[1].subName}</div>
                         <div className={styles['new-time-right']}>
@@ -48,7 +49,7 @@ const NewsIntro = ({ changeTab }) => {
                         </div>
                     </div>}
                     {informationList?.[3] && <div className={styles['new-right']} style={{ marginTop: "30px" }} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[3].id}`)}>
-                        <img alt="" src={informationList[3].image} />
+                        <img alt={informationList[3].name} src={informationList[3].image} />
                         <div className={styles['new-title']}>{informationList[3].name}</div>
                         <div className={styles['new-descrip']}>{informationList[3].subName}</div>
                         <div className={styles['new-time-right']}>
@@ -59,7 +60,7 @@ const NewsIntro = ({ changeTab }) => {
                 </div>
                 <div>
                     {informationList?.[2] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[2].id}`)}>
-                        <img alt="" src={informationList[2].image} />
+                        <img alt={informationList[2].name} src={informationList[2].image} />
                         <div className={styles['new-title']}>{informationList[2].name}</div>
                         <div className={styles['new-descrip']}>{informationList[2].subName}</div>
                         <div className={styles['new-time-right']}>
@@ -68,7 +69,7 @@ const NewsIntro = ({ changeTab }) => {
                         </div>
                     </div>}
                     {informationList?.[4] && <div className={styles['new-right']} style={{ marginTop: "30px" }} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[4].id}`)}>
-                        <img alt="" src={informationList[4].image} />
+                        <img alt={informationList[4].name} src={informationList[4].image} />
                         <div className={styles['new-title']}>{informationList[4].name}</div>
                         <div className={styles['new-descrip']}>{informationList[4].subName}</div>
                         <div className={styles['new-time-right']}>

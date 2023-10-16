@@ -6,6 +6,7 @@ import Oval from '../../../../assets/images/Oval.svg'
 import Shape from '../../../../assets/images/Shape.svg'
 import Pin from '../../../../assets/images/pin.svg'
 import { addContact, getAreaCodeList, getAreaCodeCityList } from '../../../../api/contact'
+import { localParse } from '../../../../util'
 
 const { TextArea } = Input
 const { Item } = Form
@@ -14,7 +15,7 @@ const SevenContent = () => {
     const mapRef = useRef(null)
     const [form] = Form.useForm()
 
-    const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
+    const headeData = localParse('homeData') || {}
     const { address, zhAddress, phone } = headeData
 
     const [areList, setAreaList] = useState([])
@@ -51,7 +52,7 @@ const SevenContent = () => {
 
     const handleAreaCodeList = async () => {
         const areaCodeList = await getAreaCodeList()
-        const areaList = areaCodeList.map((item) => ({ ...item, isLeaf: false }))
+        const areaList = areaCodeList?.map((item) => ({ ...item, isLeaf: false }))
         setAreaList(areaList || [])
     }
 
@@ -149,7 +150,7 @@ const SevenContent = () => {
                     >
                         <Markers
                             markers={markList}
-                            render={() => <img src={Pin} alt="" />}
+                            render={() => <img src={Pin} alt="星标图" />}
                         // useCluster={true}
                         // events={this.markersEvents}
                         ></Markers>
@@ -159,8 +160,8 @@ const SevenContent = () => {
                 <div className={styles['map-footer']}>
                     <div className={styles['footer-left']}>
                         <div className={styles['footer-img-contianer']}>
-                            <img src={Oval} alt="" className={styles['footer-img-1']} />
-                            <img src={Shape} alt="" className={styles['footer-img-2']} />
+                            <img src={Oval} alt="星标图" className={styles['footer-img-1']} />
+                            <img src={Shape} alt="星标背景图" className={styles['footer-img-2']} />
                         </div>
                         <div className={styles['footer-descrip']}>
                             <div className={styles['footer-title']}>{zhAddress}</div>

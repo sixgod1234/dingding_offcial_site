@@ -81,7 +81,7 @@ const FifthNews = () => {
                                 {
                                     itm?.list?.map((item, index) => (
                                         <div className={styles['new-right']} title={item.name} key={item.id}>
-                                            <img alt="" src={item.image} />
+                                            <img alt={item.name} src={item.image} />
                                             <div className={styles['new-title']}>
                                                 <div>{item.name}</div>
                                                 <span className={styles['new-action']}

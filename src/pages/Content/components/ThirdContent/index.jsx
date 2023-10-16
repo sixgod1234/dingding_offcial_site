@@ -27,7 +27,7 @@ const ThirdContent = ({ currentTab }) => {
                         <Input
                             style={{ maxWidth: '1000px' }}
                             placeholder="这里输入关键字…"
-                            prefix={<img src={SearchIcon} alt="" className={styles['prefix-img']} />}
+                            prefix={<img src={SearchIcon} alt="搜索" className={styles['prefix-img']} />}
                             suffix={
                                 <Button className={styles['suffix-button']} htmlType="submit">搜索</Button>
                             }

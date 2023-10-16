@@ -41,55 +41,55 @@ const NewsSecond = ({ changeTab }) => {
                 <div className={styles['new-header-two']}>
                     <div className={styles['new-title']}>最新文章</div>
                     <div></div>
-                    <div className={styles['new-action']} onClick={() => changeTab(8)}>
+                    <div className={styles['new-action']} onClick={() => changeTab({ path: '/news', state: { currentTab: 8 } })}>
                         <span>MORE</span>
                     </div>
                 </div>
                 <div className={styles['new-item']}>
-                    {dataSource[0] && <div className={styles['new-left']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[0].id}`)}>
-                        <img alt="" src={dataSource[0].image} />
-                        <div className={styles['new-time']}>{dataSource[0].publicDate && moment(Date.parse(dataSource[0].publicDate) || parseInt(dataSource[0].publicDate)).format('YYYY.MM.DD')}</div>
-                        <div className={styles['new-title']}>{dataSource[0].name}喝啥酒回复艰苦户籍科</div>
-                        <div className={styles['new-descrip']}>{dataSource[0].subName}</div>
+                    {dataSource?.[0] && <div className={styles['new-left']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource?.[0]?.id}`)}>
+                        <img alt={dataSource?.[0]?.name} src={dataSource?.[0]?.image} />
+                        <div className={styles['new-time']}>{dataSource?.[0]?.publicDate && moment(Date.parse(dataSource?.[0]?.publicDate) || parseInt(dataSource?.[0]?.publicDate)).format('YYYY.MM.DD')}</div>
+                        <div className={styles['new-title']}>{dataSource?.[0]?.name}</div>
+                        <div className={styles['new-descrip']}>{dataSource?.[0]?.subName}</div>
                     </div>}
 
-                    {dataSource[1] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[1].id}`)}>
-                        <img alt="" src={dataSource[1].image} />
-                        <div className={styles['new-title']}>{dataSource[1].name}</div>
-                        <div className={styles['new-descrip']}>{dataSource[1].subName}</div>
+                    {dataSource?.[1] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource?.[1]?.id}`)}>
+                        <img alt={dataSource?.[1]?.name} src={dataSource?.[1]?.image} />
+                        <div className={styles['new-title']}>{dataSource?.[1]?.name}</div>
+                        <div className={styles['new-descrip']}>{dataSource?.[1]?.subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{dataSource[1].publicDate && moment(Date.parse(dataSource[1].publicDate) || parseInt(dataSource[1].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource?.[1]?.publicDate && moment(Date.parse(dataSource?.[1]?.publicDate) || parseInt(dataSource?.[1]?.publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                 </div>
 
                 <div className={styles['foot-contain']}>
-                    {dataSource[2] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[2].id}`)}>
-                        <img alt="" src={dataSource[2].image} />
-                        <div className={styles['new-title']}>{dataSource[2].name}</div>
-                        <div className={styles['new-descrip']}>{dataSource[2].subName}</div>
+                    {dataSource?.[2] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource?.[2].id}`)}>
+                        <img alt={dataSource?.[2]?.name} src={dataSource?.[2]?.image} />
+                        <div className={styles['new-title']}>{dataSource?.[2]?.name}</div>
+                        <div className={styles['new-descrip']}>{dataSource?.[2]?.subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{dataSource[2].publicDate && moment(Date.parse(dataSource[2].publicDate) || parseInt(dataSource[2].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource?.[2]?.publicDate && moment(Date.parse(dataSource?.[2]?.publicDate) || parseInt(dataSource?.[2]?.publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
-                    {dataSource[3] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[3].id}`)}>
-                        <img alt="" src={dataSource[3].image} />
-                        <div className={styles['new-title']}>{dataSource[3].name}</div>
-                        <div className={styles['new-descrip']}>{dataSource[3].subName}</div>
+                    {dataSource?.[3] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource?.[3]?.id}`)}>
+                        <img alt={dataSource?.[3]?.name} src={dataSource?.[3]?.image} />
+                        <div className={styles['new-title']}>{dataSource?.[3]?.name}</div>
+                        <div className={styles['new-descrip']}>{dataSource?.[3]?.subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{dataSource[3].publicDate && moment(Date.parse(dataSource[3].publicDate) || parseInt(dataSource[3].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource?.[3]?.publicDate && moment(Date.parse(dataSource?.[3]?.publicDate) || parseInt(dataSource?.[3]?.publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
-                    {dataSource[4] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource[4].id}`)}>
-                        <img alt="" src={dataSource[4].image} />
-                        <div className={styles['new-title']}>{dataSource[4].name}</div>
-                        <div className={styles['new-descrip']}>{dataSource[4].subName}</div>
+                    {dataSource?.[4] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=''&id=${dataSource?.[4]?.id}`)}>
+                        <img alt={dataSource?.[4]?.name} src={dataSource?.[4]?.image} />
+                        <div className={styles['new-title']}>{dataSource?.[4]?.name}</div>
+                        <div className={styles['new-descrip']}>{dataSource?.[4]?.subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
-                            <span>{dataSource[4].publicDate && moment(Date.parse(dataSource[4].publicDate) || parseInt(dataSource[4].publicDate)).format('YYYY.MM.DD')}</span>
+                            <span>{dataSource?.[4]?.publicDate && moment(Date.parse(dataSource?.[4]?.publicDate) || parseInt(dataSource?.[4]?.publicDate)).format('YYYY.MM.DD')}</span>
                         </div>
                     </div>}
                 </div>

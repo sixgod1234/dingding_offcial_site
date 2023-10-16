@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { headTabData } from './constant'
 import Header from '../Header'
 import Footer from '../Footer'
@@ -18,7 +18,7 @@ import { getProductAll, getProductTypeList, addProductList } from '../../api/pro
 import { getNewsList } from '../../api/article'
 import { Spin, message } from 'antd'
 
-const Home = () => {
+const Layout = () => {
     const domRef = useRef(null)
     const navDom = useRef(null)
     const headerDom = useRef(null)
@@ -30,6 +30,13 @@ const Home = () => {
     const [isFixed, setIsFixed] = useState(false)
     const [loading, setLoading] = useState(false)
     const isDetail = location.pathname === '/detail'
+    const { hash } = location
+
+    useLayoutEffect(() => {
+        if (location.pathname === '/') {
+            navigate('/home')
+        }
+    }, [])
 
     // 滚动header显示其他样式
     useEffect(() => {
@@ -59,12 +66,27 @@ const Home = () => {
 
     // 每次切换tab滚动到顶部
     useEffect(() => {
+        if (hash) {
+            const id = decodeURIComponent(hash.replace('#', ''));
+            scrollToAnchor(id)
+            return
+        }
         domRef?.current.scrollTo({ top: 0 });
-    }, [currentTab, isDetail])
+    }, [currentTab, isDetail, hash])
 
-    const handleClick = (index) => {
-        isDetail && navigate('/')
-        setCurrentTab(index)
+    const scrollToAnchor = (anchorName) => {
+        if (anchorName) {
+            // 找到锚点
+            let anchorElement = document.getElementById(anchorName);
+            // 如果对应id的锚点存在，就跳转到锚点
+            if (anchorElement) { anchorElement.scrollIntoView({ behavior: "smooth", block: "center" }); }
+        }
+    }
+
+    const handleClick = (item) => {
+        setCurrentTab(item.state.currentTab)
+        navigate(item.path)
+        // setCurrentTab(index)
     }
 
     // 行业资讯/默认五条
@@ -170,9 +192,9 @@ const Home = () => {
                         {
                             headTabData.map((item, index) => (
                                 <li key={index}
-                                    onClick={() => handleClick(index)}
-                                    className={styles[currentTab === index && currentTab < 6 ? 'li-active' : '']}>
-                                    {item}
+                                    onClick={() => handleClick(item)}
+                                    className={styles[currentTab == index && currentTab < 6 ? 'li-active' : '']}>
+                                    {item.element || item.label}
                                 </li>
                             ))
                         }
@@ -192,4 +214,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Layout

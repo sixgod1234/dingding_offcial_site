@@ -7,6 +7,7 @@ import leftHead from '../../../assets/images/left-head.png'
 import { Layout, Menu, Button, theme, Dropdown, message } from 'antd';
 import { menuData } from './constant'
 import { loginOut, getUser, refreshToken } from '../../../api/login'
+import { localParse } from '../../../util'
 
 const { Header, Sider, Content } = Layout;
 
@@ -18,7 +19,7 @@ const AdminLayout = () => {
     // console.log(mentKey)
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localParse('token')
         if (!token) {
             message.warning('请先登录')
             navigate('/login')
@@ -66,9 +67,9 @@ const AdminLayout = () => {
     return (
         <>
             {
-                localStorage.getItem('token') && <Layout className={styles['container']}>
+                localParse('token') && <Layout className={styles['container']}>
                     <Sider trigger={null} collapsible collapsed={collapsed} width={180} className={styles['aside-container']}>
-                        <div className={styles["demo-logo-vertical"]}><img src={collapsed ? leftHead : headTitle} alt="" /></div>
+                        <div className={styles["demo-logo-vertical"]}><img src={collapsed ? leftHead : headTitle} alt="公司图标" /></div>
                         <Menu
                             theme="dark"
                             mode="inline"

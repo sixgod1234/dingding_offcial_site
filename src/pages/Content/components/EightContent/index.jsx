@@ -5,13 +5,14 @@ import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import { honorBackground, personData, firstContentImg } from '../../data'
 import RightIcon from '../../../../assets/images/Slice 9.png'
 import Macy from 'macy'
+import { localParse } from '../../../../util'
 
 const EightContent = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [personIndex, setPersonIndex] = useState(0)
     const [masonry, setMasonry] = useState(null)
 
-    const headeData = JSON.parse(localStorage.getItem('homeData') || '{}') || '{}'
+    const headeData = localParse('homeData') || {}
     const { companyStyle, companyDescription, companyIntroduction, honorWall } = headeData
     let imgs = companyStyle?.map((item) => item.url || '') || []
     let honors = honorWall?.map((item) => item.url || '') || []
@@ -21,7 +22,7 @@ const EightContent = () => {
     }, [])
 
     useLayoutEffect(() => {
-        masonry && masonry.runOnImageLoad(function () {
+        masonry && masonry?.runOnImageLoad(function () {
             masonry.recalculate(true);
         }, true);
     })
@@ -62,14 +63,14 @@ const EightContent = () => {
         <div className={styles['first-content']}>
             <div className={styles['center-content']}>
                 <div className={styles['home-two-back']}>
-                    {(imgs?.length > 1) ? <img className={styles['second-one-icon']} src={imgs[currentIndex === 0 ? (imgs.length - 1) : (currentIndex - 1)]} alt="" /> : null}
-                    {imgs?.length ? <img className={styles['second-two-icon']} src={imgs[currentIndex]} alt="" /> : null}
-                    {imgs?.length > 2 ? <img className={styles['second-three-icon']} src={imgs[currentIndex === imgs.length - 1 ? 0 : currentIndex + 1]} alt="" /> : null}
-                    {(imgs?.length > 1) ? <img className={styles['second-four-icon']} src={RightIcon} alt="" onClick={() => handleAddOrSubIndex('1')} /> : null}
+                    {(imgs?.length > 1) ? <img className={styles['second-one-icon']} src={imgs[currentIndex === 0 ? (imgs.length - 1) : (currentIndex - 1)]} alt="成功案例图" /> : null}
+                    {imgs?.length ? <img className={styles['second-two-icon']} src={imgs[currentIndex]} alt="成功案例图" /> : null}
+                    {imgs?.length > 2 ? <img className={styles['second-three-icon']} src={imgs[currentIndex === imgs.length - 1 ? 0 : currentIndex + 1]} alt="成功案例图" /> : null}
+                    {(imgs?.length > 1) ? <img className={styles['second-four-icon']} src={RightIcon} alt="成功案例图" onClick={() => handleAddOrSubIndex('1')} /> : null}
                 </div>
                 <div className={styles['home-second-content']}>
-                    <div className={styles['content-title']}>Company Profile</div>
-                    <div className={styles['content-description']}>{companyIntroduction || '町町的产品和解决方案，最厉害的町町'}</div>
+                    <h1 className={styles['content-title']}>Company Profile</h1>
+                    <h2 className={styles['content-description']}>{companyIntroduction || '町町的产品和解决方案，最厉害的町町'}</h2>
                     <div className={styles['content-exam']} title={companyDescription}>
                         {companyDescription || '司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍。'}
                     </div>
@@ -98,7 +99,7 @@ const EightContent = () => {
 
                 <div className={`${styles['honor-background']} macy-container`}>
                     {
-                        honors?.map((item, index) => <img key={index} src={item} alt="" className={styles['honoe-img']} />)
+                        honors?.map((item, index) => <img key={index} src={item} alt="荣誉资质" className={styles['honoe-img']} />)
                     }
                 </div>
             </div>

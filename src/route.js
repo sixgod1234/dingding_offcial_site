@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import NewsDetail from './pages/NewsDetail'
 import Login from './pages/Admin/Login'
 import Layout from './pages/Admin/Layout'
@@ -10,6 +11,7 @@ import ProductManage from './pages/Admin/ProductManage'
 import ProductEdit from './pages/Admin/ProductEdit'
 import ArticleManage from './pages/Admin/ArticleManage'
 import ArticleEdit from './pages/Admin/ArticleEdit'
+
 export const Routes = createBrowserRouter([
     {
         path: '/login',
@@ -52,10 +54,47 @@ export const Routes = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
+        errorElement: <NotFound />,
         children: [
             {
                 path: '/detail',
                 element: <NewsDetail />,
+            },
+            {
+                path: '/home',
+                element: null,
+            },
+            {
+                path: '/product',
+                element: null,
+            },
+            {
+                path: '/resolution',
+                element: null,
+            },
+            {
+                path: '/successed-case',
+                element: null,
+            },
+            {
+                path: '/contact-us',
+                element: null,
+            },
+            {
+                path: '/about-us',
+                element: null,
+            },
+            {
+                path: '/search',
+                element: null,
+            },
+            {
+                path: '/search',
+                element: null,
+            },
+            {
+                path: '/news',
+                element: null,
             },
         ]
     },

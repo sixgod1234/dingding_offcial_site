@@ -125,7 +125,7 @@ export const items = [
                         extra={
                             <img
                                 width={272}
-                                alt="logo"
+                                alt="优秀产品案例图"
                                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                             />
                         }
@@ -187,7 +187,7 @@ export const items = [
                         extra={
                             <img
                                 width={272}
-                                alt="logo"
+                                alt="团队风采图"
                                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                             />
                         }
