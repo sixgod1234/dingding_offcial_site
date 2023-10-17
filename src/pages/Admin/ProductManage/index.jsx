@@ -96,9 +96,19 @@ const ProductManage = () => {
             if (type === '0') {
             }
             if (type === '1') {
-                if (action === 'add' && productList.length > 99) {
-                    message.warning('最多可增加100种产品类型')
-                    return
+                if (action === 'add') {
+                    if (productList.length > 99) {
+                        message.warning('最多可增加100种产品类型')
+                        return
+                    }
+                    if (values?.name) {
+                        const filterData = productList.filter((item) => item.name === values.name)
+                        console.log(filterData)
+                        if (filterData.length > 0) {
+                            message.warning('产品类型中文名称相同')
+                            return
+                        }
+                    }
                 }
                 action === 'add' ? await addProductType(values) : await editProductType({ ...data, ...values })
                 handleProductTypeList()

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect } from 'react'
-import { headTabData } from './constant'
+import { headTabData, getUrl } from './constant'
 import Header from '../Header'
 import Footer from '../Footer'
 import Content from '../Content'
@@ -33,8 +33,14 @@ const Layout = () => {
     const { hash } = location
 
     useLayoutEffect(() => {
-        if (location.pathname === '/') {
-            navigate('/home')
+        if (!isDetail && location.pathname) {
+            if (location.pathname === '/') {
+                navigate('/home')
+            } else {
+                const tab = getUrl(location.pathname)
+                console.log(tab)
+                tab && setCurrentTab(tab)
+            }
         }
     }, [])
 
@@ -79,7 +85,11 @@ const Layout = () => {
             // 找到锚点
             let anchorElement = document.getElementById(anchorName);
             // 如果对应id的锚点存在，就跳转到锚点
-            if (anchorElement) { anchorElement.scrollIntoView({ behavior: "smooth", block: "center" }); }
+            if (anchorElement) {
+                anchorElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            } else {
+                domRef?.current.scrollTo({ top: 0 });
+            }
         }
     }
 

@@ -20,7 +20,7 @@ const NewsIntro = ({ changeTab }) => {
             <div className={styles['new-header-two']}>
                 <h1 className={styles['new-title']}>行业资讯</h1>
                 <div></div>
-                <div className={styles['new-action']} onClick={() => changeTab({ path: '/news', state: { currentTab: 7 } })}>
+                <div className={styles['new-action']} onClick={() => changeTab({ path: '/information', state: { currentTab: 7 } })}>
                     <span>MORE</span>
                 </div>
             </div>

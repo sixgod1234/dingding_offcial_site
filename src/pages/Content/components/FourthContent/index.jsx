@@ -46,22 +46,22 @@ const FourthContent = () => {
 
             <div style={{ minHeight: "500px", transform: 'scale(0.9)' }}>
                 {
-                    productAllType?.map((item, index) => (
+                    productModuleData?.map((item, index) => (
                         <>
-                            <div className={`${styles['product-' + ((index + 1) % 5)]}  ${styles['product-modules-all']}`} key={item.id}>
-                                {productAll[productMap.get(item.id)]?.length ? <div className={styles['product-left']} id={item.enName}>
-                                    <h1 className={styles['product-en']}>{item.enName}</h1>
+                            <div className={`${styles['product-' + ((index + 1) % 5)]}  ${styles['product-modules-all']}`} key={item.name}>
+                                {item?.products.length ? <div className={styles['product-left']} id={item.subName}>
+                                    <h1 className={styles['product-en']}>{item.subName}</h1>
                                     <h2 className={styles['product-zh']}>{item.name}</h2>
                                 </div> : null}
                                 <div className={styles['product-right']}>
-                                    {productAll[productMap.get(item.id)]?.map((itm, idx) => (
-                                        <div onClick={() => navigate(`/detail?type=product&id=${itm.id}`)} className={`${styles['product-item-0']} ${styles['product-item-' + (idx > 2 ? 2 : idx)]}`}>
+                                    {item.products.map((itm, idx) => (
+                                        <div className={`${styles['product-item-0']} ${styles['product-item-' + (idx > 2 ? 2 : idx)]}`}>
                                             <div className={styles['product-descrip']}>
                                                 <div className={styles['p-title']} title={itm.name}>{itm.name}</div>
-                                                <div className={styles['p-descrip']} title={itm.profile}>{itm.profile}</div>
+                                                <div className={styles['p-descrip']} title={itm.subName}>{itm.describe}</div>
                                             </div>
                                             <div className={styles['right-img']}>
-                                                <img src={itm.image} alt={itm.name} />
+                                                <img src={itm.icon} alt={itm.describe} />
                                             </div>
                                         </div>
                                     ))

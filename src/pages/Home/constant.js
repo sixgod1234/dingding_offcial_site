@@ -92,3 +92,46 @@ export const headTabData = headReSource.map((item) => {
     return item
 }
 )
+
+const pathTab = [
+    {
+        path: '/home',
+        tab: 0,
+    },
+    {
+        path: '/product',
+        tab: 1,
+    },
+    {
+        path: '/resolution',
+        tab: 2,
+    },
+    {
+        path: '/successed-case',
+        tab: 3,
+    },
+    {
+        path: '/contact-us',
+        tab: 4,
+    },
+    {
+        path: '/about-us',
+        tab: 5,
+    },
+    {
+        path: '/search',
+        tab: 6,
+    },
+    {
+        path: '/information',
+        tab: 7,
+    },
+    {
+        path: '/news',
+        tab: 8,
+    },
+]
+
+export const getUrl = (pathname) => {
+    return pathTab.filter((item) => item.path === pathname)[0]?.tab
+}

@@ -89,7 +89,7 @@ export const Routes = createBrowserRouter([
                 element: null,
             },
             {
-                path: '/search',
+                path: '/information',
                 element: null,
             },
             {

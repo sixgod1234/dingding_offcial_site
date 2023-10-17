@@ -13,7 +13,7 @@ const Footer = ({ changeTab }) => {
     const headeData = localParse('homeData') || {}
     const productAllType = () => {
         let arr = localParse('productAllType') || [];
-        console.log(localParse('productAllType'))
+        // console.log(localParse('productAllType'))
         if (arr.length) {
             let newArr = arr.slice(0, 4).map((item) => ({ ...item, path: '/product', href: item.enName, currentTab: 1 }))
             return [{ path: '', href: '', currentTab: 1, name: '产品中心' }, ...newArr]

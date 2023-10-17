@@ -12,7 +12,7 @@ import EightContent from './components/EightContent'
 const Content = ({ currentTab, changeTab }) => {
     // 0:首页, 1:产品中心,2:解决方案 ,3:成功案例,4:联系我们,5:关于我们,6:搜索,7:搜索行业资讯带关键词,8:最新新闻
     return (
-        <>
+        <div style={{ minHeight: "500px" }}>
             {currentTab === 0 && <FirstContent changeTab={changeTab} />}
             {currentTab === 1 && <FourthContent />}
             {currentTab === 2 && <FifthContent />}
@@ -22,7 +22,7 @@ const Content = ({ currentTab, changeTab }) => {
             {currentTab === 6 && <SecondContent changeTab={changeTab} />}
             {currentTab === 7 && <ThirdContent currentTab={currentTab} />}
             {currentTab === 8 && <ThirdContent currentTab={currentTab} />}
-        </>
+        </div>
     )
 }
 
