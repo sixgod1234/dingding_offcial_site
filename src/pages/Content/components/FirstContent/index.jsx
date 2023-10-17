@@ -42,8 +42,8 @@ const FirstContent = ({ changeTab }) => {
                     }
                 </div>
                 <div className={styles['home-first-content']}>
-                    <div className={styles['content-title']}>Company Profile</div>
-                    <div className={styles['content-description']}>{dingProfile}</div>
+                    <h1 className={styles['content-title']}>Company Profile</h1>
+                    <h2 className={styles['content-description']}>{dingProfile}</h2>
                     <div className={styles['content-subscription']}>{dingDescription}</div>
                     <div className={styles['content-img-container']}>
                         {
@@ -153,7 +153,7 @@ const FirstContent = ({ changeTab }) => {
                             }
                         </div>
                         <div className={styles['content-right']}>
-                            <div className={styles['content-title']}>Character introduction</div>
+                            <div className={styles['content-title']} style={{ fontSize: '18px' }}>Character introduction</div>
                             <div className={styles['content-second-title']}>{peData?.[personIndex]?.title}</div>
                             <div className={styles['content-des']}>
                                 {peData?.[personIndex]?.content}

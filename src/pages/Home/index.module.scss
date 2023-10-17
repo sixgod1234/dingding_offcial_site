@@ -6,8 +6,8 @@
         position: sticky;
         top: 0;
         z-index: 102;
-        width: 84%;
-        padding: 0 8%;
+        width: 82%;
+        padding: 0 9%;
         height: 54px;
         display: flex;
         justify-content: space-between;
@@ -33,6 +33,7 @@
                 list-style: none;
                 box-sizing: border-box;
                 cursor: pointer;
+                font-size: 14px;
                 &:hover{
                     border-bottom: 3px solid #fff;
                     text-shadow: 0 0 4px #fff;
@@ -116,7 +117,7 @@
         font-style: normal;
         min-height: 680px;
         background:url('../../assets/images/Slice 14.png') no-repeat;
-        background-size: 100% 680px;
+        background-size: 100% 600px;
         position: relative;
         top: -54px;
     }

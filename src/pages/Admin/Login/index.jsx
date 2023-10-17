@@ -14,10 +14,9 @@ const Login = () => {
             setLoading(true)
             const data = await loginIn(values)
             const { tokenHead, token } = data
-            setLoading(false)
             localStorage.setItem('token', tokenHead + token)
+            setLoading(false)
             navigate('/admin/home-detail')
-            // console.log('Received values of form: ', data, values);
         } catch (err) {
             setLoading(false)
             message.error('登录失败')

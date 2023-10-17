@@ -13,10 +13,10 @@ const FirstHead = () => {
     return (
         <div className={styles['first-content']}>
             <div className={styles['header-left']}>
-                <div className={styles['left-title-one']}>{headEnTitle || 'Sience xxxx womenshishui'}</div>
-                <div className={styles['left-title-two']}>{headZnTitle || '町町使一切成为可能物联网领军'}</div>
+                <h1 className={styles['left-title-one']}>{headEnTitle || 'Sience xxxx womenshishui'}</h1>
+                <h1 className={styles['left-title-two']}>{headZnTitle || '町町使一切成为可能物联网领军'}</h1>
                 {/* <div className={styles['left-title-three']}>{'物联网领军'}</div> */}
-                <div className={styles['left-title-four']}>{headDescription || '辅助信息的文字示例文本，天空万里无云呈深蓝色。 我们面前的景象确实是崇高的。'}</div>
+                <p className={styles['left-title-four']}>{headDescription || '辅助信息的文字示例文本，天空万里无云呈深蓝色。 我们面前的景象确实是崇高的。'}</p>
             </div>
             <div className={styles['header-right']}>
                 <Carousel autoplay dots={false}>

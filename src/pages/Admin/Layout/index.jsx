@@ -19,7 +19,7 @@ const AdminLayout = () => {
     // console.log(mentKey)
 
     useEffect(() => {
-        const token = localParse('token')
+        const token = localStorage.getItem('token')
         if (!token) {
             message.warning('请先登录')
             navigate('/login')
@@ -67,7 +67,7 @@ const AdminLayout = () => {
     return (
         <>
             {
-                localParse('token') && <Layout className={styles['container']}>
+                localStorage.getItem('token') && <Layout className={styles['container']}>
                     <Sider trigger={null} collapsible collapsed={collapsed} width={180} className={styles['aside-container']}>
                         <div className={styles["demo-logo-vertical"]}><img src={collapsed ? leftHead : headTitle} alt="公司图标" /></div>
                         <Menu

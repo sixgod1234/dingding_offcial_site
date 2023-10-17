@@ -34,12 +34,12 @@ const NewsSecond = ({ changeTab }) => {
         <Spin spinning={loading}>
             <div className={styles['new-container']}>
                 <div className={styles['new-header']}>
-                    <div className={styles['new-title']}>latest articles</div>
+                    <h1 className={styles['new-title']}>latest articles</h1>
                     <div className={styles['new-action']}></div>
                     <div className={styles['new-action']}></div>
                 </div>
                 <div className={styles['new-header-two']}>
-                    <div className={styles['new-title']}>最新文章</div>
+                    <h1 className={styles['new-title']}>最新文章</h1>
                     <div></div>
                     <div className={styles['new-action']} onClick={() => changeTab({ path: '/news', state: { currentTab: 8 } })}>
                         <span>MORE</span>

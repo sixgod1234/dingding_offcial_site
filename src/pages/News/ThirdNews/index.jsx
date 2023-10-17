@@ -152,7 +152,7 @@ const ThirdNews = ({ searchWord, type = '0', tabType, enName = '', zhName = '' }
                         newsData?.map((item, index) => (
                             <div className={styles['new-right']} key={item.id} title={item.subName}>
                                 <img alt={item.name} src={item.image} />
-                                <div className={styles['new-title']} dangerouslySetInnerHTML={{ __html: getHTML(item.name) }}></div>
+                                <h1 className={styles['new-title']} dangerouslySetInnerHTML={{ __html: getHTML(item.name) }}></h1>
                                 <div className={styles['new-descrip']}>{item.subName}</div>
                                 <div className={styles['new-time-right']}>
                                     <span

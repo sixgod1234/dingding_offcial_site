@@ -27,7 +27,7 @@ const IndustryNews = ({ changeTab }) => {
     return (
         <>
             <div className={styles['second-head']}>
-                <div className={styles['second-title']}>您需要什么帮助</div>
+                <h1 className={styles['second-title']}>您需要什么帮助</h1>
                 <div className={styles['second-descrip']}>我们在这里帮助您更好地使用我们的服务。 首先，让我们弄清楚我们的文档中是否有解决方案。</div>
                 <Input
                     ref={inputDom}
@@ -43,13 +43,13 @@ const IndustryNews = ({ changeTab }) => {
             <div className={styles['content-container']}>
                 {/* { } */}
                 {firstTag.current ?
-                    <>
+                    <div style={{ transform: 'translateY(-422px)' }}>
                         <ThirdNews searchWord={searchWord} type={'1'} tabType={'1'} tabMenu={tabMenu} />
-                    </> :
-                    <>
+                    </div> :
+                    <div style={{ transform: 'translateY(-572px)' }}>
                         <NewsIntro changeTab={changeTab} />
                         <NewsSecond changeTab={changeTab} />
-                    </>}
+                    </div>}
             </div>
         </>
     )

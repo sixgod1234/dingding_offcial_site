@@ -119,12 +119,12 @@ const FourthNews = () => {
 
         <div className={styles['new-container']}>
             <div className={styles['new-header']}>
-                <div className={styles['new-title']}>solution</div>
+                <h1 className={styles['new-title']}>solution</h1>
                 <div className={styles['new-action']}></div>
                 <div className={styles['new-action']}></div>
             </div>
             <div className={styles['new-header-two']}>
-                <div className={styles['new-title']}>解决方案</div>
+                <h1 className={styles['new-title']}>解决方案</h1>
                 {/* <div className={styles['new-action']}></div> */}
                 <div className={styles['new-tab']}>
                     {
@@ -146,9 +146,9 @@ const FourthNews = () => {
                         newsData?.map((item, index) => (
                             <div className={styles['new-right']} title={item.name} key={item.id}>
                                 <img alt={item.name} src={newsData[index].image} />
-                                <div className={styles['new-title']}>
+                                <h1 className={styles['new-title']}>
                                     {item.name}
-                                </div>
+                                </h1>
                                 <div className={styles['new-descrip']}>{item.subName}</div>
                                 <div className={styles['new-time-right']}>
                                     <span

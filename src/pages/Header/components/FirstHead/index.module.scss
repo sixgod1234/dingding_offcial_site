@@ -1,51 +1,55 @@
 .first-content{
-    width: 84%;
-    padding: 0 8%;
+    // width: 84%;
+    // padding: 0 8%;
     height: 620px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transform: scale(0.8);
     .header-left{
         // width: 600px;
         // height: 400px;
-        .left-title-one{
-            padding: 20px 0;
-            letter-spacing: 3px;
-        }
         .left-title-two,.left-title-three{
-            max-width: 90%;
-            font-size: 64px;
+            max-width: 72%;
+            font-size: 50px;
             font-weight: 700;   
         }
         .left-title-four{
-            font-size: 24px;
-            padding-top: 20px;
+            font-size: 19px;
+            padding-top: 10px;
             letter-spacing: 2px;
             line-height: 50px;
-            width: 600px;
+            width: 480px;
         }
-        @media (max-width: 1422px) {
-            .left-title-two,.left-title-three{
-                font-size: 50px;
-                font-weight: 700;   
-            } 
-            .left-title-four{
-                font-size: 20px;
-            }
+        .left-title-one{
+            padding: 20px 0;
+            letter-spacing: 3px;
+            font-weight: 400;
+            font-size: 20px;
+            text-transform: uppercase;
         }
-        @media (max-width: 1200px) {
-            .left-title-two,.left-title-three{
-                font-size: 40px;
-                font-weight: 700;   
-            } 
-            .left-title-four{
-                font-size: 16px;
-            }
-        }
+        // @media (max-width: 1422px) {
+        //     .left-title-two,.left-title-three{
+        //         font-size: 40px;
+        //         font-weight: 700;   
+        //     } 
+        //     .left-title-four{
+        //         font-size: 16px;
+        //     }
+        // }
+        // @media (max-width: 1200px) {
+        //     .left-title-two,.left-title-three{
+        //         font-size: 32px;
+        //         font-weight: 700;   
+        //     } 
+        //     .left-title-four{
+        //         font-size: 13px;
+        //     }
+        // }
     }
     .header-right{
-        width: 600px;
-        height: 400px;
+        width: 560px;
+        height: 320px;
     }
     :global{
         .slick-track{

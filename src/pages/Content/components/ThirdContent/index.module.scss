@@ -7,7 +7,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: translateY(-732px);
+    transform: translateY(-800px) scale(0.8);
+    height: 0;
     .second-title{
         text-align: center;
         font-size: 64px;
@@ -84,5 +85,5 @@
 }
 
 .content-container{
-    transform: translateY(-632px);
+    transform: translateY(-400px);
 }

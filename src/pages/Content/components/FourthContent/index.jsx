@@ -19,8 +19,8 @@ const FourthContent = () => {
         <div className={styles['fourth-content']}>
             <div className={styles['product-all']}>
                 <div className={styles['product-title']}>
-                    <span className={styles['title-one']}>产品</span>
-                    <span className={styles['title-two']}>概览</span>
+                    <h1 className={styles['title-one']}>产品</h1>
+                    <h1 className={styles['title-two']}>概览</h1>
                     <span className={styles['title-three']}>overview</span>
                 </div>
 
@@ -37,28 +37,28 @@ const FourthContent = () => {
                                 <div className={styles['product-card']} key={item.id}>
                                     <img src={item.image} alt={item.name} />
                                 </div>
-                                <span> {item.name}</span>
+                                <span className={styles['cate-title']} title={item.name}> {item.name}</span>
                             </div>
                         ))
                     }
                 </div>
             </div>
 
-            <div style={{ minHeight: "500px" }}>
+            <div style={{ minHeight: "500px", transform: 'scale(0.9)' }}>
                 {
                     productAllType?.map((item, index) => (
                         <>
                             <div className={`${styles['product-' + ((index + 1) % 5)]}  ${styles['product-modules-all']}`} key={item.id}>
                                 {productAll[productMap.get(item.id)]?.length ? <div className={styles['product-left']} id={item.enName}>
-                                    <div className={styles['product-en']}>{item.enName}</div>
-                                    <div className={styles['product-zh']}>{item.name}</div>
+                                    <h1 className={styles['product-en']}>{item.enName}</h1>
+                                    <h2 className={styles['product-zh']}>{item.name}</h2>
                                 </div> : null}
                                 <div className={styles['product-right']}>
                                     {productAll[productMap.get(item.id)]?.map((itm, idx) => (
                                         <div onClick={() => navigate(`/detail?type=product&id=${itm.id}`)} className={`${styles['product-item-0']} ${styles['product-item-' + (idx > 2 ? 2 : idx)]}`}>
                                             <div className={styles['product-descrip']}>
-                                                <div className={styles['p-title']}>{itm.name}</div>
-                                                <div className={styles['p-descrip']}>{itm.profile}</div>
+                                                <div className={styles['p-title']} title={itm.name}>{itm.name}</div>
+                                                <div className={styles['p-descrip']} title={itm.profile}>{itm.profile}</div>
                                             </div>
                                             <div className={styles['right-img']}>
                                                 <img src={itm.image} alt={itm.name} />

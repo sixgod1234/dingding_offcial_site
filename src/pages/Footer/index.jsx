@@ -15,7 +15,7 @@ const Footer = ({ changeTab }) => {
         let arr = localParse('productAllType') || [];
         console.log(localParse('productAllType'))
         if (arr.length) {
-            let newArr = arr.slice(0, 5).map((item) => ({ ...item, path: '/product', href: item.enName, currentTab: 1 }))
+            let newArr = arr.slice(0, 4).map((item) => ({ ...item, path: '/product', href: item.enName, currentTab: 1 }))
             return [{ path: '', href: '', currentTab: 1, name: '产品中心' }, ...newArr]
         } else {
             return footerData[1]
@@ -28,9 +28,9 @@ const Footer = ({ changeTab }) => {
     return (
         <div className={styles['footer-container']}>
             <div className={styles['footer-action']}>
-                <div className={styles['footer-left']}>
+                <h1 className={styles['footer-left']}>
                     {contactUs || '选择我们吧文案文案选择我们吧文案文案选择我们吧文案文'}
-                </div>
+                </h1>
                 <div className={styles['footer-right']} onClick={() => changeTab?.({ path: '/contact-us', state: { currentTab: 4 } })}>
                     联系我们
                 </div>

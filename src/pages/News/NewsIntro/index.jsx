@@ -13,12 +13,12 @@ const NewsIntro = ({ changeTab }) => {
     return (
         <div className={styles['new-container']} id="information-news">
             <div className={styles['new-header']}>
-                <div className={styles['new-title']}>information</div>
+                <h1 className={styles['new-title']}>information</h1>
                 <div className={styles['new-action']}></div>
                 <div className={styles['new-action']}></div>
             </div>
             <div className={styles['new-header-two']}>
-                <div className={styles['new-title']}>行业资讯</div>
+                <h1 className={styles['new-title']}>行业资讯</h1>
                 <div></div>
                 <div className={styles['new-action']} onClick={() => changeTab({ path: '/news', state: { currentTab: 7 } })}>
                     <span>MORE</span>
@@ -34,14 +34,14 @@ const NewsIntro = ({ changeTab }) => {
                         </span>
                         <a>点击查看</a>
                     </div>
-                    <div className={styles['new-title']}>{informationList[0].name}</div>
+                    <h1 className={styles['new-title']}>{informationList[0].name}</h1>
                     <div className={styles['new-descrip']}>{informationList[0].subName}</div>
                 </div>}
 
                 <div>
                     {informationList?.[1] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[1].id}`)}>
                         <img alt={informationList[1].name} src={informationList[1].image} />
-                        <div className={styles['new-title']}>{informationList[1].name}</div>
+                        <h1 className={styles['new-title']}>{informationList[1].name}</h1>
                         <div className={styles['new-descrip']}>{informationList[1].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
@@ -50,7 +50,7 @@ const NewsIntro = ({ changeTab }) => {
                     </div>}
                     {informationList?.[3] && <div className={styles['new-right']} style={{ marginTop: "30px" }} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[3].id}`)}>
                         <img alt={informationList[3].name} src={informationList[3].image} />
-                        <div className={styles['new-title']}>{informationList[3].name}</div>
+                        <h1 className={styles['new-title']}>{informationList[3].name}</h1>
                         <div className={styles['new-descrip']}>{informationList[3].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
@@ -61,7 +61,7 @@ const NewsIntro = ({ changeTab }) => {
                 <div>
                     {informationList?.[2] && <div className={styles['new-right']} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[2].id}`)}>
                         <img alt={informationList[2].name} src={informationList[2].image} />
-                        <div className={styles['new-title']}>{informationList[2].name}</div>
+                        <h1 className={styles['new-title']}>{informationList[2].name}</h1>
                         <div className={styles['new-descrip']}>{informationList[2].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />
@@ -70,7 +70,7 @@ const NewsIntro = ({ changeTab }) => {
                     </div>}
                     {informationList?.[4] && <div className={styles['new-right']} style={{ marginTop: "30px" }} onClick={() => navigate(`/detail?type=news&newsType=information&id=${informationList[4].id}`)}>
                         <img alt={informationList[4].name} src={informationList[4].image} />
-                        <div className={styles['new-title']}>{informationList[4].name}</div>
+                        <h1 className={styles['new-title']}>{informationList[4].name}</h1>
                         <div className={styles['new-descrip']}>{informationList[4].subName}</div>
                         <div className={styles['new-time-right']}>
                             <ClockCircleOutlined />

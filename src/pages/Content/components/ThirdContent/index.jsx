@@ -21,7 +21,7 @@ const ThirdContent = ({ currentTab }) => {
     return (
         <>
             <div className={styles['second-head']}>
-                <div className={styles['second-title']}>文案文案资讯中心</div>
+                <h1 className={styles['second-title']}>文案文案资讯中心</h1>
                 <Form onFinish={onFinish} className={styles['second-content']} form={form}>
                     <Item name="searchWord" noStyle style={{ width: '100%', display: "flex", justifyConten: 'center' }}>
                         <Input
